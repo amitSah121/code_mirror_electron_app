@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Quickstart Example 3</title>
+    <link rel="icon" href="data:;base64,=">
+    <style>
+        /* Set editor dimensions */
+        #editor {
+            height: 90vh;
+            width: 100vw;
+        }
+
+        /* Stretch editor to fit inside its containing div */
+        .cm-editor {
+            height: 100%;
+            width: 100%;
+        }
+
+        #open-tabs{
+            width: 100vw;
+        }
+    </style>
+    <link rel="stylesheet" href="w3.css">
+</head>
+
+<body>
+    <!-- Editor goes in here -->
+    <div class="w3-bar" id="menu">
+        <span class="w3-bar-item w3-padding w3-border w3-small" id="menu-open-file">Open File</span>
+    </div>
+    <div class="w3-bar w3-pale-yellow w3-margin-top" id="open-tabs">
+        <span class="w3-bar-item w3-grey w3-text-white w3-small" id="tab1">Tab1</span>
+    </div>
+    <div class="w3-content" id="editor"></div>
+
+    <script src="cm6_bundle.js"></script>
+    <script>
+        // Create an initial state for the view
+        const initialState = cm6.createEditorState("function foo() {\n    console.log(123);\n}");
+        const view = cm6.createEditorView(initialState, document.getElementById("editor"));
+        let states = { "Initial State": initialState };
+
+        document.querySelector("#tab1").addEventListener("click",()=>{
+            view.dispatch({changes: {
+                from: 0,
+                to: view.state.doc.length,
+                insert: 'my new content'
+            }})
+        });
+
+        document.querySelector("#menu-open-file").addEventListener("click",async ()=>{
+            const data = await window.openAPI.getContent();
+            console.log(data);
+        })
+    </script>
+</body>
+
+</html>
