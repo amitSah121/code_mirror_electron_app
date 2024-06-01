@@ -5,13 +5,8 @@ const fs = require("fs");
 async function handleFileOpenAndContent(){
     const {canceled, filePaths} = await dialog.showOpenDialog();
     if(!canceled){
-        fs.readFile(filePaths[0],(err,data)=>{
-            if(err){
-                console.log(err);
-                return filePaths[0];
-            }
-            return data.toString()+filePaths[0];
-        })
+        
+        return `${filePaths[0]}+${fs.readFileSync(filePaths[0]).toString()}`;
     }
     return "nothing";
 }
@@ -21,7 +16,9 @@ const createWindow = ()=>{
         width: 800,
         height: 600,
         webPreferences:{
-            preload: path.join(__dirname,'preload.js')
+            preload: path.join(__dirname,'preload.js'),
+            nodeIntegration: true,
+            contextIsolation: true
         }
     });
 

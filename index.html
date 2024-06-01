@@ -22,7 +22,7 @@
             width: 100vw;
         }
     </style>
-    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
@@ -31,30 +31,12 @@
         <span class="w3-bar-item w3-padding w3-border w3-small" id="menu-open-file">Open File</span>
     </div>
     <div class="w3-bar w3-pale-yellow w3-margin-top" id="open-tabs">
-        <span class="w3-bar-item w3-grey w3-text-white w3-small" id="tab1">Tab1</span>
     </div>
     <div class="w3-content" id="editor"></div>
 
     <script src="cm6_bundle.js"></script>
-    <script>
-        // Create an initial state for the view
-        const initialState = cm6.createEditorState("function foo() {\n    console.log(123);\n}");
-        const view = cm6.createEditorView(initialState, document.getElementById("editor"));
-        let states = { "Initial State": initialState };
-
-        document.querySelector("#tab1").addEventListener("click",()=>{
-            view.dispatch({changes: {
-                from: 0,
-                to: view.state.doc.length,
-                insert: 'my new content'
-            }})
-        });
-
-        document.querySelector("#menu-open-file").addEventListener("click",async ()=>{
-            const data = await window.openAPI.getContent();
-            console.log(data);
-        })
-    </script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="renderer.js"></script>
 </body>
 
 </html>
