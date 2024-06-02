@@ -8,14 +8,26 @@
     <style>
         /* Set editor dimensions */
         #editor {
-            height: 90vh;
+            height: 60vh;
             width: 100vw;
+        }
+
+        #terminal, #output {
+            height: 30vh;
         }
 
         /* Stretch editor to fit inside its containing div */
         .cm-editor {
             height: 100%;
             width: 100%;
+        }
+
+        #terminal .cm-editor{
+            background-color: yellow;
+        }
+
+        #output .cm-editor{
+            background-color: lightblue;
         }
 
         #open-tabs{
@@ -33,6 +45,11 @@
     <div class="w3-bar w3-pale-yellow w3-margin-top" id="open-tabs">
     </div>
     <div class="w3-content" id="editor"></div>
+    <span class="w3-button w3-green" id="run">Run</span>
+    <div class="w3-container w3-row">
+        <div class="w3-content w3-half" id="terminal"></div>
+        <div class="w3-content w3-half" id="output"></div>
+    </div>
 
     <script src="cm6_bundle.js"></script>
     <script src="https://www.w3schools.com/lib/w3.js"></script>
